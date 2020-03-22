@@ -2149,11 +2149,8 @@ impl<'a> Write for WritableDst<'a> {
 
 impl<'a> Drop for WritableDst<'a> {
     fn drop(&mut self) {
-        match *self {
-            WritableDst::Buffered(ref mut dst, ref mut buf) => {
-                drop(dst.print(buf));
-            }
-            _ => {}
+        if let WritableDst::Buffered(ref mut dst, ref mut buf) = self {
+            drop(dst.print(buf));
         }
     }
 }

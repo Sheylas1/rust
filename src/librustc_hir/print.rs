@@ -2015,14 +2015,11 @@ impl<'a> State<'a> {
             }
             GenericParamKind::Type { ref default, .. } => {
                 self.print_bounds(":", param.bounds);
-                match default {
-                    Some(default) => {
-                        self.s.space();
-                        self.word_space("=");
-                        self.print_type(&default)
-                    }
-                    _ => {}
-                }
+                if let Some(default) = default {
+                    self.s.space();
+                    self.word_space("=");
+                    self.print_type(&default)
+                };
             }
             GenericParamKind::Const { ref ty } => {
                 self.word_space(":");
