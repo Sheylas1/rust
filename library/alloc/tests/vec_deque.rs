@@ -842,7 +842,7 @@ fn test_get_mut() {
 
     match ring.get_mut(1) {
         Some(x) => *x = -1,
-        None => (),
+        None => {}
     };
 
     assert_eq!(ring.get_mut(0), Some(&mut 0));

@@ -883,7 +883,7 @@ impl<'tcx> TypeVisitor<'tcx> for BoundVarsCollector<'tcx> {
                 }
             }
 
-            _ => (),
+            _ => {}
         };
 
         t.super_visit_with(self)
@@ -917,7 +917,7 @@ impl<'tcx> TypeVisitor<'tcx> for BoundVarsCollector<'tcx> {
                 unimplemented!();
             }
 
-            _ => (),
+            _ => {}
         };
 
         r.super_visit_with(self)
@@ -964,7 +964,7 @@ impl<'a, 'tcx> TypeFolder<'tcx> for NamedBoundVarSubstitutor<'a, 'tcx> {
                 ty::BrEnv => unimplemented!(),
                 ty::BrAnon(_) => {}
             },
-            _ => (),
+            _ => {}
         };
 
         r.super_fold_with(self)
@@ -1079,7 +1079,7 @@ impl<'tcx> TypeVisitor<'tcx> for PlaceholdersCollector {
                 self.next_ty_placeholder = self.next_ty_placeholder.max(p.name.as_usize() + 1);
             }
 
-            _ => (),
+            _ => {}
         };
 
         t.super_visit_with(self)
@@ -1093,7 +1093,7 @@ impl<'tcx> TypeVisitor<'tcx> for PlaceholdersCollector {
                 }
             }
 
-            _ => (),
+            _ => {}
         };
 
         r.super_visit_with(self)

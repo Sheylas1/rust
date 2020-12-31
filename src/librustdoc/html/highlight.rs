@@ -274,7 +274,7 @@ impl<'a> Classifier<'a> {
                         self.in_attribute = true;
                         sink(Highlight::EnterSpan { class: Class::Attribute });
                     }
-                    _ => (),
+                    _ => {}
                 }
                 return no_highlight(sink);
             }

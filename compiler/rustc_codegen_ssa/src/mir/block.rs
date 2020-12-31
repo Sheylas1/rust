@@ -1431,7 +1431,7 @@ impl<'a, 'tcx, Bx: BuilderMethods<'a, 'tcx>> FunctionCx<'a, 'tcx, Bx> {
         use self::ReturnDest::*;
 
         match dest {
-            Nothing => (),
+            Nothing => {}
             Store(dst) => bx.store_arg(&ret_abi, llval, dst),
             IndirectOperand(tmp, index) => {
                 let op = bx.load_operand(tmp);

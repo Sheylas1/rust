@@ -253,7 +253,7 @@ pub fn expand(cap: &[u8], params: &[Param], vars: &mut Variables) -> Result<Vec<
                         let mut flags = Flags::new();
                         let mut fstate = FormatState::Flags;
                         match cur {
-                            ':' => (),
+                            ':' => {}
                             '#' => flags.alternate = true,
                             ' ' => flags.space = true,
                             '.' => fstate = FormatState::Precision,
@@ -267,15 +267,15 @@ pub fn expand(cap: &[u8], params: &[Param], vars: &mut Variables) -> Result<Vec<
                     }
 
                     // conditionals
-                    '?' => (),
+                    '?' => {}
                     't' => match stack.pop() {
                         Some(Number(0)) => state = SeekIfElse(0),
-                        Some(Number(_)) => (),
+                        Some(Number(_)) => {}
                         Some(_) => return Err("non-number on stack with conditional".to_string()),
                         None => return Err("stack is empty".to_string()),
                     },
                     'e' => state = SeekIfEnd(0),
-                    ';' => (),
+                    ';' => {}
                     _ => return Err(format!("unrecognized format option {}", cur)),
                 }
             }

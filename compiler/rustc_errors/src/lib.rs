@@ -138,7 +138,7 @@ impl CodeSuggestion {
                     let hi_opt = hi_opt.and_then(|hi| line.char_indices().map(|(i, _)| i).nth(hi));
                     match hi_opt {
                         Some(hi) if hi > lo => buf.push_str(&line[lo..hi]),
-                        Some(_) => (),
+                        Some(_) => {}
                         None => buf.push_str(&line[lo..]),
                     }
                 }

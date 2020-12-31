@@ -828,7 +828,7 @@ impl AutoTraitFinder<'tcx> {
                                 .at(&obligation.cause, obligation.param_env)
                                 .eq(c1, c2)
                             {
-                                Ok(_) => (),
+                                Ok(_) => {}
                                 Err(_) => return false,
                             }
                         }

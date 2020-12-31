@@ -1124,7 +1124,7 @@ impl<'a> Visitor<'a> for AstValidator<'a> {
         let mut prev_ty_default = None;
         for param in &generics.params {
             match param.kind {
-                GenericParamKind::Lifetime => (),
+                GenericParamKind::Lifetime => {}
                 GenericParamKind::Type { default: Some(_), .. } => {
                     prev_ty_default = Some(param.ident.span);
                 }

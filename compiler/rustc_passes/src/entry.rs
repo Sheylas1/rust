@@ -105,7 +105,7 @@ fn throw_attr_err(sess: &Session, span: Span, attr: &str) {
 
 fn find_item(item: &Item<'_>, ctxt: &mut EntryContext<'_, '_>, at_root: bool) {
     match entry_point_type(&ctxt.session, item, at_root) {
-        EntryPointType::None => (),
+        EntryPointType::None => {}
         _ if !matches!(item.kind, ItemKind::Fn(..)) => {
             if let Some(attr) = ctxt.session.find_by_name(item.attrs, sym::start) {
                 throw_attr_err(&ctxt.session, attr.span, "start");

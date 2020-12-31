@@ -55,7 +55,7 @@ impl<T: Clone> Clone for OnceCell<T> {
         let res = OnceCell::new();
         if let Some(value) = self.get() {
             match res.set(value.clone()) {
-                Ok(()) => (),
+                Ok(()) => {}
                 Err(_) => unreachable!(),
             }
         }

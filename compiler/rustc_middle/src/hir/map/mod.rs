@@ -543,7 +543,7 @@ impl<'hir> Map<'hir> {
     /// immediate parent is an item or a closure.
     pub fn is_argument(&self, id: HirId) -> bool {
         match self.find(id) {
-            Some(Node::Binding(_)) => (),
+            Some(Node::Binding(_)) => {}
             _ => return false,
         }
         matches!(

@@ -2278,7 +2278,7 @@ impl<'a, 'tcx> TypeChecker<'a, 'tcx> {
                             )
                             | (Some(CastTy::Float), Some(CastTy::Int(_) | CastTy::Float))
                             | (Some(CastTy::Ptr(_)), Some(CastTy::Int(_) | CastTy::Ptr(_)))
-                            | (Some(CastTy::FnPtr), Some(CastTy::Int(_) | CastTy::Ptr(_))) => (),
+                            | (Some(CastTy::FnPtr), Some(CastTy::Int(_) | CastTy::Ptr(_))) => {}
                         }
                     }
                 }

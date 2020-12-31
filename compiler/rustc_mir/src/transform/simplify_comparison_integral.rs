@@ -90,7 +90,7 @@ impl<'tcx> MirPass<'tcx> for SimplifyComparisonIntegral {
                     Rvalue::BinaryOp(_, Constant(_), ref mut right @ Move(_)) => {
                         *right = Copy(opt.to_switch_on);
                     }
-                    _ => (),
+                    _ => {}
                 }
             }
 

@@ -316,7 +316,7 @@ impl<'a> Resolver<'a> {
                         );
                     }
                     // No similarly-named labels exist.
-                    None => (),
+                    None => {}
                 }
 
                 err
@@ -529,7 +529,7 @@ impl<'a> Resolver<'a> {
                         );
                     }
                     // No similarly-named labels exist.
-                    None => (),
+                    None => {}
                 }
 
                 err

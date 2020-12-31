@@ -273,7 +273,7 @@ impl<'tcx> Visitor<'tcx> for MarkSymbolVisitor<'tcx> {
                     self.mark_as_used_if_union(adt, fields);
                 }
             }
-            _ => (),
+            _ => {}
         }
 
         intravisit::walk_expr(self, expr);
@@ -299,7 +299,7 @@ impl<'tcx> Visitor<'tcx> for MarkSymbolVisitor<'tcx> {
                 let res = self.typeck_results().qpath_res(qpath, pat.hir_id);
                 self.handle_res(res);
             }
-            _ => (),
+            _ => {}
         }
 
         self.in_pat = true;
@@ -418,7 +418,7 @@ impl<'v, 'k, 'tcx> ItemLikeVisitor<'v> for LifeSeeder<'k, 'tcx> {
                     self.struct_constructors.insert(ctor_hir_id, item.hir_id);
                 }
             }
-            _ => (),
+            _ => {}
         }
     }
 

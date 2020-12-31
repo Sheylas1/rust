@@ -60,7 +60,7 @@ impl Visitor<'tcx> for UseFactsExtractor<'_> {
             Some(DefUse::Def) => self.insert_def(local, location),
             Some(DefUse::Use) => self.insert_use(local, location),
             Some(DefUse::Drop) => self.insert_drop_use(local, location),
-            _ => (),
+            _ => {}
         }
     }
 
@@ -78,7 +78,7 @@ impl Visitor<'tcx> for UseFactsExtractor<'_> {
                     self.insert_path_access(mpi, location);
                 }
             }
-            _ => (),
+            _ => {}
         }
     }
 }

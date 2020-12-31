@@ -108,7 +108,7 @@ impl<T: Clone> Clone for SyncOnceCell<T> {
         let cell = Self::new();
         if let Some(value) = self.get() {
             match cell.set(value.clone()) {
-                Ok(()) => (),
+                Ok(()) => {}
                 Err(_) => unreachable!(),
             }
         }

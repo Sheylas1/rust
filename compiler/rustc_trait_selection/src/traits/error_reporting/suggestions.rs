@@ -2131,7 +2131,7 @@ impl<'a, 'tcx> InferCtxtExt<'tcx> for InferCtxt<'a, 'tcx> {
             }
             ObligationCauseCode::ReturnType
             | ObligationCauseCode::ReturnValue(_)
-            | ObligationCauseCode::BlockTailExpression(_) => (),
+            | ObligationCauseCode::BlockTailExpression(_) => {}
             ObligationCauseCode::TrivialBound => {
                 err.help("see issue #48214");
                 if tcx.sess.opts.unstable_features.is_nightly_build() {

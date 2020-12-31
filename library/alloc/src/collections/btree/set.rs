@@ -558,14 +558,14 @@ impl<T: Ord> BTreeSet<T> {
             Equal => {
                 self_iter.next();
             }
-            Greater => (),
+            Greater => {}
         }
         match self_max.cmp(other_max) {
             Greater => return false,
             Equal => {
                 self_iter.next_back();
             }
-            Less => (),
+            Less => {}
         }
         if self_iter.len() <= other.len() / ITER_PERFORMANCE_TIPPING_SIZE_DIFF {
             for next in self_iter {
@@ -582,7 +582,7 @@ impl<T: Ord> BTreeSet<T> {
                 match other_iter.next().map_or(Less, |other1| self1.cmp(other1)) {
                     Less => return false,
                     Equal => self_next = self_iter.next(),
-                    Greater => (),
+                    Greater => {}
                 }
             }
         }

@@ -163,7 +163,7 @@ impl EarlyLintPass for NonCamelCaseTypes {
             | ast::ItemKind::Struct(..)
             | ast::ItemKind::Union(..) => self.check_case(cx, "type", &it.ident),
             ast::ItemKind::Trait(..) => self.check_case(cx, "trait", &it.ident),
-            _ => (),
+            _ => {}
         }
     }
 
@@ -368,7 +368,7 @@ impl<'tcx> LateLintPass<'tcx> for NonSnakeCase {
                 MethodLateContext::TraitAutoImpl => {
                     self.check_snake_case(cx, "trait method", ident);
                 }
-                _ => (),
+                _ => {}
             },
             FnKind::ItemFn(ident, _, header, _, attrs) => {
                 // Skip foreign-ABI #[no_mangle] functions (Issue #31924)
@@ -377,7 +377,7 @@ impl<'tcx> LateLintPass<'tcx> for NonSnakeCase {
                 }
                 self.check_snake_case(cx, "function", ident);
             }
-            FnKind::Closure(_) => (),
+            FnKind::Closure(_) => {}
         }
     }
 

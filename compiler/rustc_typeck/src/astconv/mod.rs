@@ -1198,7 +1198,7 @@ impl<'o, 'tcx> dyn AstConv<'tcx> + 'o {
                             bounds.projection_bounds.push((pred, span));
                         }
                     }
-                    _ => (),
+                    _ => {}
                 }
             }
         }

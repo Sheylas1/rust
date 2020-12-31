@@ -49,7 +49,7 @@ fn test_run_basic() {
 #[test]
 fn test_join_panic() {
     match thread::spawn(move || panic!()).join() {
-        result::Result::Err(_) => (),
+        result::Result::Err(_) => {}
         result::Result::Ok(()) => panic!(),
     }
 }

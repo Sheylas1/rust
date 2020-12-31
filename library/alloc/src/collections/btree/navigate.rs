@@ -490,7 +490,7 @@ impl<'a, K: 'a, V: 'a> NodeRef<marker::Immut<'a>, K, V, marker::LeafOrInternal> 
         self.visit_nodes_in_order(|pos| match pos {
             Position::Leaf(node) => result += node.len(),
             Position::Internal(node) => result += node.len(),
-            Position::InternalKV(_) => (),
+            Position::InternalKV(_) => {}
         });
         result
     }

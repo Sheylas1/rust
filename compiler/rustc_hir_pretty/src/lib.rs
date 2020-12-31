@@ -852,14 +852,14 @@ impl<'a> State<'a> {
                 }
                 self.word_nbsp(")");
             }
-            hir::VisibilityKind::Inherited => (),
+            hir::VisibilityKind::Inherited => {}
         }
     }
 
     pub fn print_defaultness(&mut self, defaultness: hir::Defaultness) {
         match defaultness {
             hir::Defaultness::Default { .. } => self.word_nbsp("default"),
-            hir::Defaultness::Final => (),
+            hir::Defaultness::Final => {}
         }
     }
 
@@ -1063,7 +1063,7 @@ impl<'a> State<'a> {
             hir::BlockCheckMode::UnsafeBlock(..) => self.word_space("unsafe"),
             hir::BlockCheckMode::PushUnsafeBlock(..) => self.word_space("push_unsafe"),
             hir::BlockCheckMode::PopUnsafeBlock(..) => self.word_space("pop_unsafe"),
-            hir::BlockCheckMode::DefaultBlock => (),
+            hir::BlockCheckMode::DefaultBlock => {}
         }
         self.maybe_print_comment(blk.span.lo());
         self.ann.pre(self, AnnNode::Block(blk));

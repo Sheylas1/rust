@@ -1263,7 +1263,7 @@ fn test_encode_hashmap_with_arbitrary_key() {
     let mut encoder = Encoder::new(&mut mem_buf);
     let result = hm.encode(&mut encoder);
     match result.unwrap_err() {
-        EncoderError::BadHashmapKey => (),
+        EncoderError::BadHashmapKey => {}
         _ => panic!("expected bad hash map key"),
     }
 }

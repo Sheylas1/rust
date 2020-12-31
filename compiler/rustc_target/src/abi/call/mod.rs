@@ -495,7 +495,7 @@ impl<'a, Ty> ArgAbi<'a, Ty> {
     }
 
     pub fn is_indirect(&self) -> bool {
-        matches!(self.mode, PassMode::Indirect {..})
+        matches!(self.mode, PassMode::Indirect { .. })
     }
 
     pub fn is_sized_indirect(&self) -> bool {

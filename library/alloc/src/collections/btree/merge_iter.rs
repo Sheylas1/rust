@@ -78,7 +78,7 @@ impl<I: Iterator> MergeIterInner<I> {
             match cmp(a1, b1) {
                 Ordering::Less => self.peeked = b_next.take().map(Peeked::B),
                 Ordering::Greater => self.peeked = a_next.take().map(Peeked::A),
-                Ordering::Equal => (),
+                Ordering::Equal => {}
             }
         }
         (a_next, b_next)

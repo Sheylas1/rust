@@ -464,7 +464,7 @@ fn arg_local_refs<'a, 'tcx, Bx: BuilderMethods<'a, 'tcx>>(
 
         let arg = fx.fn_abi.args.last().unwrap();
         match arg.mode {
-            PassMode::Direct(_) => (),
+            PassMode::Direct(_) => {}
             _ => bug!("caller location must be PassMode::Direct, found {:?}", arg.mode),
         }
 

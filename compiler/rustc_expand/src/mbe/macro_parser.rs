@@ -391,7 +391,7 @@ fn nameize<I: Iterator<Item = NamedMatch>>(
                 }
                 Occupied(..) => return Err((sp, format!("duplicated bind name: {}", bind_name))),
             },
-            TokenTree::MetaVar(..) | TokenTree::Token(..) => (),
+            TokenTree::MetaVar(..) | TokenTree::Token(..) => {}
         }
 
         Ok(())

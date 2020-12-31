@@ -1688,7 +1688,7 @@ impl<'cx, 'tcx> MirBorrowckCtxt<'cx, 'tcx> {
                     {
                         self.cause = Some(*cause);
                     }
-                    _ => (),
+                    _ => {}
                 }
             }
         }

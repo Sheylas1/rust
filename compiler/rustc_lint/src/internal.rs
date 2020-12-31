@@ -203,7 +203,7 @@ fn is_ty_or_ty_ctxt(cx: &LateContext<'_>, ty: &Ty<'_>) -> Option<String> {
                         }
                     }
                 }
-                _ => (),
+                _ => {}
             }
         }
     }

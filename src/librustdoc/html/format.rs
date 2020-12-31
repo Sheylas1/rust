@@ -1088,29 +1088,32 @@ impl clean::Visibility {
     crate fn print_with_space<'tcx>(self, tcx: TyCtxt<'tcx>) -> impl fmt::Display + 'tcx {
         use rustc_span::symbol::kw;
 
-        display_fn(move |f| match self {
-            clean::Public => f.write_str("pub "),
-            clean::Inherited => Ok(()),
-            clean::Visibility::Restricted(did) if did.index == CRATE_DEF_INDEX => {
-                write!(f, "pub(crate) ")
-            }
-            clean::Visibility::Restricted(did) => {
-                f.write_str("pub(")?;
-                let path = tcx.def_path(did);
-                debug!("path={:?}", path);
-                let first_name =
-                    path.data[0].data.get_opt_name().expect("modules are always named");
-                if path.data.len() != 1 || (first_name != kw::SelfLower && first_name != kw::Super)
-                {
-                    f.write_str("in ")?;
+        display_fn(move |f| {
+            match self {
+                clean::Public => f.write_str("pub "),
+                clean::Inherited => Ok(()),
+                clean::Visibility::Restricted(did) if did.index == CRATE_DEF_INDEX => {
+                    write!(f, "pub(crate) ")
                 }
-                // modified from `resolved_path()` to work with `DefPathData`
-                let last_name = path.data.last().unwrap().data.get_opt_name().unwrap();
-                for seg in &path.data[..path.data.len() - 1] {
-                    write!(f, "{}::", seg.data.get_opt_name().unwrap())?;
+                clean::Visibility::Restricted(did) => {
+                    f.write_str("pub(")?;
+                    let path = tcx.def_path(did);
+                    debug!("path={:?}", path);
+                    let first_name =
+                        path.data[0].data.get_opt_name().expect("modules are always named");
+                    if path.data.len() != 1
+                        || (first_name != kw::SelfLower && first_name != kw::Super)
+                    {
+                        f.write_str("in ")?;
+                    }
+                    // modified from `resolved_path()` to work with `DefPathData`
+                    let last_name = path.data.last().unwrap().data.get_opt_name().unwrap();
+                    for seg in &path.data[..path.data.len() - 1] {
+                        write!(f, "{}::", seg.data.get_opt_name().unwrap())?;
+                    }
+                    let path = anchor(did, &last_name.as_str()).to_string();
+                    write!(f, "{}) ", path)
                 }
-                let path = anchor(did, &last_name.as_str()).to_string();
-                write!(f, "{}) ", path)
             }
         })
     }

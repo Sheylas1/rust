@@ -111,7 +111,7 @@ where
             FieldsShape::Arbitrary { .. } => {
                 match arg_layout.variants {
                     abi::Variants::Multiple { .. } => return Err(CannotUseFpConv),
-                    abi::Variants::Single { .. } => (),
+                    abi::Variants::Single { .. } => {}
                 }
                 for i in arg_layout.fields.index_by_increasing_offset() {
                     let field = arg_layout.field(cx, i);
@@ -233,7 +233,7 @@ fn classify_arg<'a, Ty, C>(
                 arg.cast_to(CastTarget::pair(l, r));
                 return;
             }
-            _ => (),
+            _ => {}
         }
     }
 

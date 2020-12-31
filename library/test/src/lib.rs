@@ -491,7 +491,7 @@ pub fn run_test(
         }
         DynTestFn(f) => {
             match strategy {
-                RunStrategy::InProcess => (),
+                RunStrategy::InProcess => {}
                 _ => panic!("Cannot run dynamic test fn out-of-process"),
             };
             run_test_inner(

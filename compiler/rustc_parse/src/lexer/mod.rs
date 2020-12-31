@@ -411,7 +411,7 @@ impl<'a> StringReader<'a> {
                     Base::Binary => {
                         self.err_span_(start, suffix_start, "binary float literal is not supported")
                     }
-                    _ => (),
+                    _ => {}
                 }
 
                 let id = self.symbol_from_to(start, suffix_start);
@@ -457,7 +457,7 @@ impl<'a> StringReader<'a> {
             Some(RawStrError::TooManyDelimiters { found }) => {
                 self.report_too_many_hashes(start, found)
             }
-            None => (),
+            None => {}
         }
     }
 

@@ -107,7 +107,7 @@ impl<'a, 'hir> Visitor<'hir> for CheckLoopVisitor<'a, 'hir> {
                         None
                     };
                     match loop_kind {
-                        None | Some(hir::LoopSource::Loop) => (),
+                        None | Some(hir::LoopSource::Loop) => {}
                         Some(kind) => {
                             struct_span_err!(
                                 self.sess,

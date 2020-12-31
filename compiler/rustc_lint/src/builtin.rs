@@ -169,7 +169,7 @@ impl<'tcx> LateLintPass<'tcx> for BoxPointers {
                 let def_id = cx.tcx.hir().local_def_id(it.hir_id);
                 self.check_heap_type(cx, it.span, cx.tcx.type_of(def_id))
             }
-            _ => (),
+            _ => {}
         }
 
         // If it's a struct, we also have to check the fields' types
@@ -180,7 +180,7 @@ impl<'tcx> LateLintPass<'tcx> for BoxPointers {
                     self.check_heap_type(cx, struct_field.span, cx.tcx.type_of(def_id));
                 }
             }
-            _ => (),
+            _ => {}
         }
     }
 
@@ -2760,7 +2760,7 @@ impl ClashingExternDeclarations {
                             // their layouts differ.
                             match compare_layouts(a, b) {
                                 Ok(false) => return false,
-                                _ => (), // otherwise, continue onto the full, fields comparison
+                                _ => {} // otherwise, continue onto the full, fields comparison
                             }
 
                             // Grab a flattened representation of all fields.

@@ -428,7 +428,7 @@ impl<'test> TestCx<'test> {
         }
         if self.props.should_ice {
             match proc_res.status.code() {
-                Some(101) => (),
+                Some(101) => {}
                 _ => self.fatal("expected ICE"),
             }
         }
@@ -1384,7 +1384,7 @@ impl<'test> TestCx<'test> {
                 self.fatal_proc_rec("compiler encountered internal error", proc_res)
             }
             None => self.fatal_proc_rec("compiler terminated by signal", proc_res),
-            _ => (),
+            _ => {}
         }
     }
 

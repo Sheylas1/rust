@@ -275,22 +275,22 @@ impl<'tcx> OnUnimplementedFormatString {
         let mut result = Ok(());
         for token in parser {
             match token {
-                Piece::String(_) => (), // Normal string, no need to check it
+                Piece::String(_) => {} // Normal string, no need to check it
                 Piece::NextArgument(a) => match a.position {
                     // `{Self}` is allowed
-                    Position::ArgumentNamed(s) if s == kw::SelfUpper => (),
+                    Position::ArgumentNamed(s) if s == kw::SelfUpper => {}
                     // `{ThisTraitsName}` is allowed
-                    Position::ArgumentNamed(s) if s == name => (),
+                    Position::ArgumentNamed(s) if s == name => {}
                     // `{from_method}` is allowed
-                    Position::ArgumentNamed(s) if s == sym::from_method => (),
+                    Position::ArgumentNamed(s) if s == sym::from_method => {}
                     // `{from_desugaring}` is allowed
-                    Position::ArgumentNamed(s) if s == sym::from_desugaring => (),
+                    Position::ArgumentNamed(s) if s == sym::from_desugaring => {}
                     // `{ItemContext}` is allowed
-                    Position::ArgumentNamed(s) if s == sym::ItemContext => (),
+                    Position::ArgumentNamed(s) if s == sym::ItemContext => {}
                     // So is `{A}` if A is a type parameter
                     Position::ArgumentNamed(s) => {
                         match generics.params.iter().find(|param| param.name == s) {
-                            Some(_) => (),
+                            Some(_) => {}
                             None => {
                                 struct_span_err!(
                                     tcx.sess,

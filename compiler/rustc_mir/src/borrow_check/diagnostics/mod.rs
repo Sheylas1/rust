@@ -468,7 +468,7 @@ impl<'cx, 'tcx> MirBorrowckCtxt<'cx, 'tcx> {
                 }
             }
             // Base is a `static` so won't be from an overloaded operator
-            _ => (),
+            _ => {}
         };
 
         // If we didn't find an overloaded deref or index, then assume it's a

@@ -159,7 +159,7 @@ impl Visitor<'tcx> for LocalUseMapBuild<'_> {
                 Some(DefUse::Def) => self.insert_def(local, location),
                 Some(DefUse::Use) => self.insert_use(local, location),
                 Some(DefUse::Drop) => self.insert_drop(local, location),
-                _ => (),
+                _ => {}
             }
         }
     }

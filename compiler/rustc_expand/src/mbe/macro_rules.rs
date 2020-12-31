@@ -569,7 +569,7 @@ fn check_lhs_no_empty_seq(sess: &ParseSess, tts: &[mbe::TokenTree]) -> bool {
     use mbe::TokenTree;
     for tt in tts {
         match *tt {
-            TokenTree::Token(..) | TokenTree::MetaVar(..) | TokenTree::MetaVarDecl(..) => (),
+            TokenTree::Token(..) | TokenTree::MetaVar(..) | TokenTree::MetaVarDecl(..) => {}
             TokenTree::Delimited(_, ref del) => {
                 if !check_lhs_no_empty_seq(sess, &del.tts) {
                     return false;

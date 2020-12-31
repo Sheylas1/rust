@@ -81,12 +81,12 @@ fn any_downcast_mut() {
     }
 
     match a_r.downcast_mut::<Test>() {
-        None => (),
+        None => {}
         x => panic!("Unexpected value {:?}", x),
     }
 
     match b_r.downcast_mut::<Test>() {
-        None => (),
+        None => {}
         x => panic!("Unexpected value {:?}", x),
     }
 

@@ -486,7 +486,7 @@ impl<'a, 'hir> LoweringContext<'a, 'hir> {
                             self.lctx.allocate_hir_id_counter(id);
                         }
                     }
-                    UseTreeKind::Glob => (),
+                    UseTreeKind::Glob => {}
                     UseTreeKind::Nested(ref trees) => {
                         for &(ref use_tree, id) in trees {
                             let hir_id = self.lctx.allocate_hir_id_counter(id);
@@ -511,7 +511,9 @@ impl<'a, 'hir> LoweringContext<'a, 'hir> {
                         let count = generics
                             .params
                             .iter()
-                            .filter(|param| matches!(param.kind, ast::GenericParamKind::Lifetime { .. }))
+                            .filter(|param| {
+                                matches!(param.kind, ast::GenericParamKind::Lifetime { .. })
+                            })
                             .count();
                         self.lctx.type_def_lifetime_params.insert(def_id.to_def_id(), count);
                     }
@@ -2047,13 +2049,14 @@ impl<'a, 'hir> LoweringContext<'a, 'hir> {
                 })
             },
         ));
-        generic_args.extend(lifetime_params[input_lifetimes_count..].iter().map(|&(span, _)|
+        generic_args.extend(lifetime_params[input_lifetimes_count..].iter().map(|&(span, _)| {
             // Output lifetime like `'_`.
             GenericArg::Lifetime(hir::Lifetime {
                 hir_id: self.next_id(),
                 span,
                 name: hir::LifetimeName::Implicit,
-            })));
+            })
+        }));
         let generic_args = self.arena.alloc_from_iter(generic_args);
 
         // Create the `Foo<...>` reference itself. Note that the `type

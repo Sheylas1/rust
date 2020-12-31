@@ -189,17 +189,19 @@ fn sized_trait_bound_spans<'tcx>(
     tcx: TyCtxt<'tcx>,
     bounds: hir::GenericBounds<'tcx>,
 ) -> impl 'tcx + Iterator<Item = Span> {
-    bounds.iter().filter_map(move |b| match b {
-        hir::GenericBound::Trait(trait_ref, hir::TraitBoundModifier::None)
-            if trait_has_sized_self(
-                tcx,
-                trait_ref.trait_ref.trait_def_id().unwrap_or_else(|| FatalError.raise()),
-            ) =>
-        {
-            // Fetch spans for supertraits that are `Sized`: `trait T: Super`
-            Some(trait_ref.span)
+    bounds.iter().filter_map(move |b| {
+        match b {
+            hir::GenericBound::Trait(trait_ref, hir::TraitBoundModifier::None)
+                if trait_has_sized_self(
+                    tcx,
+                    trait_ref.trait_ref.trait_def_id().unwrap_or_else(|| FatalError.raise()),
+                ) =>
+            {
+                // Fetch spans for supertraits that are `Sized`: `trait T: Super`
+                Some(trait_ref.span)
+            }
+            _ => None,
         }
-        _ => None,
     })
 }
 
@@ -481,7 +483,7 @@ fn virtual_call_violation_for_method<'tcx>(
                 receiver_for_self_ty(tcx, receiver_ty, tcx.mk_unit(), method.def_id);
 
             match abi_of_ty(unit_receiver_ty) {
-                Some(Abi::Scalar(..)) => (),
+                Some(Abi::Scalar(..)) => {}
                 abi => {
                     tcx.sess.delay_span_bug(
                         tcx.def_span(method.def_id),
@@ -501,7 +503,7 @@ fn virtual_call_violation_for_method<'tcx>(
                 receiver_for_self_ty(tcx, receiver_ty, trait_object_ty, method.def_id);
 
             match abi_of_ty(trait_object_receiver) {
-                Some(Abi::ScalarPair(..)) => (),
+                Some(Abi::ScalarPair(..)) => {}
                 abi => {
                     tcx.sess.delay_span_bug(
                         tcx.def_span(method.def_id),

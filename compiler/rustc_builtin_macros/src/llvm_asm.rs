@@ -269,7 +269,7 @@ fn parse_inline_asm<'a>(
                     p.eat(&token::Comma);
                 }
             }
-            StateNone => (),
+            StateNone => {}
         }
 
         loop {

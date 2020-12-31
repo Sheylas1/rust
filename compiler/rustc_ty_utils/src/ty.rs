@@ -368,7 +368,7 @@ fn well_formed_types_in_env<'tcx>(
             inputs.extend(fn_sig.inputs().iter().flat_map(|ty| ty.walk()));
         }
 
-        NodeKind::Other => (),
+        NodeKind::Other => {}
     }
     let input_clauses = inputs.into_iter().filter_map(|arg| {
         match arg.unpack() {

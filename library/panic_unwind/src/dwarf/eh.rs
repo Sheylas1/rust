@@ -108,7 +108,7 @@ pub unsafe fn find_eh_action(lsda: *const u8, context: &EHContext<'_>) -> Result
         match ip as isize {
             -1 => return Ok(EHAction::None),
             0 => return Ok(EHAction::Terminate),
-            _ => (),
+            _ => {}
         }
         let mut idx = ip;
         loop {

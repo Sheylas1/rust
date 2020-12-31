@@ -1976,7 +1976,7 @@ impl<'tcx, 'v> ParItemLikeVisitor<'v> for PrefetchVisitor<'tcx> {
                     self.prefetch_mir(def_id)
                 }
             }
-            _ => (),
+            _ => {}
         }
     }
 
@@ -2002,7 +2002,7 @@ impl<'tcx, 'v> ParItemLikeVisitor<'v> for PrefetchVisitor<'tcx> {
                     self.prefetch_mir(def_id)
                 }
             }
-            hir::ImplItemKind::TyAlias(..) => (),
+            hir::ImplItemKind::TyAlias(..) => {}
         }
     }
 

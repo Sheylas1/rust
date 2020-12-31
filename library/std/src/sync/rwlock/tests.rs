@@ -173,7 +173,7 @@ fn test_rwlock_try_write() {
 
     let write_result = lock.try_write();
     match write_result {
-        Err(TryLockError::WouldBlock) => (),
+        Err(TryLockError::WouldBlock) => {}
         Ok(_) => assert!(false, "try_write should not succeed while read_guard is in scope"),
         Err(_) => assert!(false, "unexpected error"),
     }

@@ -2941,7 +2941,7 @@ pub trait Iterator {
             };
 
             match cmp(x, y) {
-                Ordering::Equal => (),
+                Ordering::Equal => {}
                 non_eq => return non_eq,
             }
         }
@@ -3026,7 +3026,7 @@ pub trait Iterator {
             };
 
             match partial_cmp(x, y) {
-                Some(Ordering::Equal) => (),
+                Some(Ordering::Equal) => {}
                 non_eq => return non_eq,
             }
         }

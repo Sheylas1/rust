@@ -784,7 +784,7 @@ pub fn validate_candidates(
                     let msg = format!("argument {} is required to be a constant", index + 1);
                     ccx.tcx.sess.span_err(span, &msg);
                 }
-                _ => (),
+                _ => {}
             }
 
             is_promotable

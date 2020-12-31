@@ -64,7 +64,7 @@ where
                                 ty::subst::GenericArgKind::Const(ct) => {
                                     assert!(matches!(ct.val, ty::ConstKind::Param(_)))
                                 }
-                                ty::subst::GenericArgKind::Lifetime(..) => (),
+                                ty::subst::GenericArgKind::Lifetime(..) => {}
                             },
                             _ => {}
                         }

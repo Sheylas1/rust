@@ -58,7 +58,7 @@ impl<'tcx> ExplicitPredicatesMap<'tcx> {
                     | ty::PredicateAtom::Subtype(..)
                     | ty::PredicateAtom::ConstEvaluatable(..)
                     | ty::PredicateAtom::ConstEquate(..)
-                    | ty::PredicateAtom::TypeWellFormedFromEnv(..) => (),
+                    | ty::PredicateAtom::TypeWellFormedFromEnv(..) => {}
                 }
             }
 

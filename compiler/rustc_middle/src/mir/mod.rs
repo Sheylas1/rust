@@ -766,7 +766,7 @@ mod binding_form_impl {
             match self {
                 Var(binding) => binding.hash_stable(hcx, hasher),
                 ImplicitSelf(kind) => kind.hash_stable(hcx, hasher),
-                RefForGuard => (),
+                RefForGuard => {}
             }
         }
     }

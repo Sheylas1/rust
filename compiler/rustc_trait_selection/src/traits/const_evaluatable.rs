@@ -306,7 +306,7 @@ impl<'a, 'tcx> AbstractConstBuilder<'a, 'tcx> {
     fn add_node(&mut self, node: Node<'tcx>, span: Span) -> NodeId {
         // Mark used nodes.
         match node {
-            Node::Leaf(_) => (),
+            Node::Leaf(_) => {}
             Node::Binop(_, lhs, rhs) => {
                 self.nodes[lhs].used = true;
                 self.nodes[rhs].used = true;
@@ -542,7 +542,7 @@ pub(super) fn mir_abstract_const<'tcx>(
             // we want to look into them or treat them as opaque projections.
             //
             // Right now we do neither of that and simply always fail to unify them.
-            DefKind::AnonConst => (),
+            DefKind::AnonConst => {}
             _ => return Ok(None),
         }
         let body = tcx.mir_const(def).borrow();

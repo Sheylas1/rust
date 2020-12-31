@@ -1296,7 +1296,7 @@ pub fn copy(from: &Path, to: &Path) -> io::Result<u64> {
                 // destination already exists, or if the source and destination
                 // are on different devices. In all these cases `fcopyfile`
                 // should succeed.
-                Some(libc::ENOTSUP) | Some(libc::EEXIST) | Some(libc::EXDEV) => (),
+                Some(libc::ENOTSUP) | Some(libc::EEXIST) | Some(libc::EXDEV) => {}
                 Some(libc::ENOSYS) => HAS_FCLONEFILEAT.store(false, Ordering::Relaxed),
                 _ => return Err(err),
             },

@@ -666,7 +666,7 @@ impl<'a, 'tcx> InferBorrowKind<'a, 'tcx> {
                     // pointer itself must be unique, but not
                     // necessarily *mutable*
                     ty::Ref(.., hir::Mutability::Mut) => borrow_kind = ty::UniqueImmBorrow,
-                    _ => (),
+                    _ => {}
                 }
             }
             self.adjust_upvar_deref(place_with_id, diag_expr_id, borrow_kind);

@@ -316,7 +316,7 @@ where
                 return Ok(self.relate_projection_ty(projection_ty, self.infcx.tcx.mk_ty_var(vid)));
             }
 
-            _ => (),
+            _ => {}
         }
 
         let generalized_ty = self.generalize_value(value_ty, vid)?;

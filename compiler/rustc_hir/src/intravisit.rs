@@ -825,7 +825,7 @@ pub fn walk_pat<'v, V: Visitor<'v>>(visitor: &mut V, pattern: &'v Pat<'v>) {
             walk_list!(visitor, visit_expr, lower_bound);
             walk_list!(visitor, visit_expr, upper_bound);
         }
-        PatKind::Wild => (),
+        PatKind::Wild => {}
         PatKind::Slice(prepatterns, ref slice_pattern, postpatterns) => {
             walk_list!(visitor, visit_pat, prepatterns);
             walk_list!(visitor, visit_pat, slice_pattern);
@@ -848,7 +848,7 @@ pub fn walk_foreign_item<'v, V: Visitor<'v>>(visitor: &mut V, foreign_item: &'v 
             }
         }
         ForeignItemKind::Static(ref typ, _) => visitor.visit_ty(typ),
-        ForeignItemKind::Type => (),
+        ForeignItemKind::Type => {}
     }
 
     walk_list!(visitor, visit_attribute, foreign_item.attrs);

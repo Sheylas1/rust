@@ -465,7 +465,7 @@ impl Cursor<'_> {
                         break;
                     }
                 }
-                _ => (),
+                _ => {}
             }
         }
 
@@ -549,7 +549,7 @@ impl Cursor<'_> {
                             self.bump();
                             empty_exponent = !self.eat_float_exponent();
                         }
-                        _ => (),
+                        _ => {}
                     }
                 }
                 Float { base, empty_exponent }
@@ -663,7 +663,7 @@ impl Cursor<'_> {
                     // Bump again to skip escaped character.
                     self.bump();
                 }
-                _ => (),
+                _ => {}
             }
         }
         // End of file reached.
@@ -699,7 +699,7 @@ impl Cursor<'_> {
 
         // Check that string is started.
         match self.bump() {
-            Some('"') => (),
+            Some('"') => {}
             c => {
                 let c = c.unwrap_or(EOF_CHAR);
                 return (n_start_hashes, Some(RawStrError::InvalidStarter { bad_char: c }));

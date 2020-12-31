@@ -549,15 +549,19 @@ impl<'a> TraitDef<'a> {
                 let bounds: Vec<_> =
                     // extra restrictions on the generics parameters to the
                     // type being derived upon
-                    self.additional_bounds.iter().map(|p| {
-                        cx.trait_bound(p.to_path(cx, self.span, type_ident, generics))
-                    }).chain(
-                        // require the current trait
-                        iter::once(cx.trait_bound(trait_path.clone()))
-                    ).chain(
-                        // also add in any bounds from the declaration
-                        param.bounds.iter().cloned()
-                    ).collect();
+                    self
+                        .additional_bounds
+                        .iter()
+                        .map(|p| cx.trait_bound(p.to_path(cx, self.span, type_ident, generics)))
+                        .chain(
+                            // require the current trait
+                            iter::once(cx.trait_bound(trait_path.clone())),
+                        )
+                        .chain(
+                            // also add in any bounds from the declaration
+                            param.bounds.iter().cloned(),
+                        )
+                        .collect();
 
                 cx.typaram(self.span, param.ident, vec![], bounds, None)
             }
@@ -598,7 +602,7 @@ impl<'a> TraitDef<'a> {
 
             let mut ty_params = params
                 .iter()
-                .filter(|param| matches!(param.kind,  ast::GenericParamKind::Type{..}))
+                .filter(|param| matches!(param.kind, ast::GenericParamKind::Type { .. }))
                 .peekable();
 
             if ty_params.peek().is_some() {

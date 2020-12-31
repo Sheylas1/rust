@@ -52,7 +52,7 @@ impl<'a, 'tcx> FnCtxt<'a, 'tcx> {
             hir::BodyOwnerKind::Const | hir::BodyOwnerKind::Static(_) => {
                 wbcx.visit_node_id(body.value.span, item_id);
             }
-            hir::BodyOwnerKind::Closure | hir::BodyOwnerKind::Fn => (),
+            hir::BodyOwnerKind::Closure | hir::BodyOwnerKind::Fn => {}
         }
         wbcx.visit_body(body);
         wbcx.visit_min_capture_map();

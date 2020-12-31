@@ -714,7 +714,7 @@ impl<'a: 'ast, 'ast> LateResolutionVisitor<'a, '_, 'ast> {
                         }
                     }
                 }
-                _ => (),
+                _ => {}
             }
         };
         has_self_arg
@@ -1654,12 +1654,15 @@ impl<'tcx> LifetimeContext<'_, 'tcx> {
             match missing {
                 MissingLifetimeSpot::Generics(generics) => {
                     let (span, sugg) = if let Some(param) = generics.params.iter().find(|p| {
-                        !matches!(p.kind, hir::GenericParamKind::Type {
-                            synthetic: Some(hir::SyntheticTyParamKind::ImplTrait),
-                            ..
-                        } | hir::GenericParamKind::Lifetime {
-                            kind: hir::LifetimeParamKind::Elided,
-                        })
+                        !matches!(
+                            p.kind,
+                            hir::GenericParamKind::Type {
+                                synthetic: Some(hir::SyntheticTyParamKind::ImplTrait),
+                                ..
+                            } | hir::GenericParamKind::Lifetime {
+                                kind: hir::LifetimeParamKind::Elided,
+                            }
+                        )
                     }) {
                         (param.span.shrink_to_lo(), format!("{}, ", lifetime_ref))
                     } else {
@@ -1839,10 +1842,13 @@ impl<'tcx> LifetimeContext<'_, 'tcx> {
                         msg = "consider introducing a named lifetime parameter".to_string();
                         should_break = true;
                         if let Some(param) = generics.params.iter().find(|p| {
-                            !matches!(p.kind, hir::GenericParamKind::Type {
-                                synthetic: Some(hir::SyntheticTyParamKind::ImplTrait),
-                                ..
-                            })
+                            !matches!(
+                                p.kind,
+                                hir::GenericParamKind::Type {
+                                    synthetic: Some(hir::SyntheticTyParamKind::ImplTrait),
+                                    ..
+                                }
+                            )
                         }) {
                             (param.span.shrink_to_lo(), "'a, ".to_string())
                         } else {

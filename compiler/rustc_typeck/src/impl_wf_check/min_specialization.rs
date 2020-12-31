@@ -363,7 +363,7 @@ fn check_specialization_on<'tcx>(tcx: TyCtxt<'tcx>, predicate: ty::Predicate<'tc
     match predicate.skip_binders() {
         // Global predicates are either always true or always false, so we
         // are fine to specialize on.
-        _ if predicate.is_global() => (),
+        _ if predicate.is_global() => {}
         // We allow specializing on explicitly marked traits with no associated
         // items.
         ty::PredicateAtom::Trait(pred, hir::Constness::NotConst) => {

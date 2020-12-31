@@ -1117,7 +1117,7 @@ crate fn plain_text_summary(md: &str) -> String {
             Event::HardBreak | Event::SoftBreak => s.push(' '),
             Event::Start(Tag::CodeBlock(..)) => break,
             Event::End(Tag::Paragraph) => break,
-            _ => (),
+            _ => {}
         }
     }
 

@@ -799,7 +799,6 @@ impl<T: ?Sized> Unpin for *mut T {}
 /// are implemented in `traits::SelectionContext::copy_clone_conditions()`
 /// in `rustc_trait_selection`.
 mod copy_impls {
-
     use super::Copy;
 
     macro_rules! impl_copy {

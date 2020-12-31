@@ -1077,7 +1077,7 @@ pub(super) fn check_representable(tcx: TyCtxt<'_>, sp: Span, item_def_id: LocalD
             recursive_type_with_infinite_size_error(tcx, item_def_id.to_def_id(), spans);
             return false;
         }
-        Representability::Representable | Representability::ContainsRecursive => (),
+        Representability::Representable | Representability::ContainsRecursive => {}
     }
     true
 }

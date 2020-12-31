@@ -451,7 +451,7 @@ impl<'a, 'tcx> MirBorrowckCtxt<'a, 'tcx> {
                             ty,
                         ));
                     }
-                    _ => (),
+                    _ => {}
                 }
             }
 

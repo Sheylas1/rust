@@ -367,7 +367,7 @@ impl<'a, 'tcx> FnCtxt<'a, 'tcx> {
                         Applicability::MachineApplicable,
                     );
                 }
-                _ => (),
+                _ => {}
             }
         }
     }

@@ -111,7 +111,7 @@ impl<A: PartialOrd> SlicePartialOrd for A {
 
         for i in 0..l {
             match lhs[i].partial_cmp(&rhs[i]) {
-                Some(Ordering::Equal) => (),
+                Some(Ordering::Equal) => {}
                 non_eq => return non_eq,
             }
         }
@@ -175,7 +175,7 @@ impl<A: Ord> SliceOrd for A {
 
         for i in 0..l {
             match lhs[i].cmp(&rhs[i]) {
-                Ordering::Equal => (),
+                Ordering::Equal => {}
                 non_eq => return non_eq,
             }
         }

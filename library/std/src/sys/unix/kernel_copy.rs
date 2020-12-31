@@ -627,7 +627,7 @@ fn sendfile_splice(mode: SpliceMode, reader: RawFd, writer: RawFd, len: u64) -> 
         SpliceMode::Splice if !HAS_SPLICE.load(Ordering::Relaxed) => {
             return CopyResult::Fallback(0);
         }
-        _ => (),
+        _ => {}
     }
 
     let mut written = 0u64;

@@ -972,7 +972,7 @@ fn generic_simd_intrinsic(
         // trailing bits.
         let expected_int_bits = in_len.max(8);
         match ret_ty.kind() {
-            ty::Uint(i) if i.bit_width() == Some(expected_int_bits) => (),
+            ty::Uint(i) if i.bit_width() == Some(expected_int_bits) => {}
             _ => return_error!("bitmask `{}`, expected `u{}`", ret_ty, expected_int_bits),
         }
 
@@ -1243,7 +1243,7 @@ fn generic_simd_intrinsic(
         // The element type of the third argument must be a signed integer type of any width:
         let (_, element_ty2) = arg_tys[2].simd_size_and_type(bx.tcx());
         match element_ty2.kind() {
-            ty::Int(_) => (),
+            ty::Int(_) => {}
             _ => {
                 require!(
                     false,
@@ -1371,7 +1371,7 @@ fn generic_simd_intrinsic(
 
         // The element type of the third argument must be a signed integer type of any width:
         match element_ty2.kind() {
-            ty::Int(_) => (),
+            ty::Int(_) => {}
             _ => {
                 require!(
                     false,

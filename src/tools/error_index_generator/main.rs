@@ -222,7 +222,7 @@ impl Formatter for MarkdownFormatter {
     ) -> Result<(), Box<dyn Error>> {
         Ok(match info.description {
             Some(ref desc) => write!(output, "## {}\n{}\n", err_code, desc)?,
-            None => (),
+            None => {}
         })
     }
 

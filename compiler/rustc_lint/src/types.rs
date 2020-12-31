@@ -969,7 +969,7 @@ impl<'a, 'tcx> ImproperCTypesVisitor<'a, 'tcx> {
                             }
 
                             match self.check_variant_for_ffi(cache, ty, def, variant, substs) {
-                                FfiSafe => (),
+                                FfiSafe => {}
                                 r => return r,
                             }
                         }
@@ -1253,7 +1253,7 @@ impl<'tcx> LateLintPass<'tcx> for ImproperCTypesDeclarations {
                 hir::ForeignItemKind::Static(ref ty, _) => {
                     vis.check_foreign_static(it.hir_id, ty.span);
                 }
-                hir::ForeignItemKind::Type => (),
+                hir::ForeignItemKind::Type => {}
             }
         }
     }

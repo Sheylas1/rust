@@ -1214,7 +1214,7 @@ impl Json {
                     for v in map.values() {
                         match v.search(key) {
                             x if x.is_some() => return x,
-                            _ => (),
+                            _ => {}
                         }
                     }
                     None
@@ -1741,7 +1741,7 @@ impl<T: Iterator<Item = char>> Parser<T> {
 
         // Make sure a digit follows the decimal place.
         match self.ch_or_null() {
-            '0'..='9' => (),
+            '0'..='9' => {}
             _ => return self.error(InvalidNumber),
         }
 
@@ -1775,7 +1775,7 @@ impl<T: Iterator<Item = char>> Parser<T> {
 
         // Make sure a digit follows the exponent place.
         match self.ch_or_null() {
-            '0'..='9' => (),
+            '0'..='9' => {}
             _ => return self.error(InvalidNumber),
         }
         while !self.eof() {
@@ -1854,7 +1854,7 @@ impl<T: Iterator<Item = char>> Parser<T> {
                         // two hex escapes, representing UTF-16 surrogates.
                         n1 @ 0xD800..=0xDBFF => {
                             match (self.next_char(), self.next_char()) {
-                                (Some('\\'), Some('u')) => (),
+                                (Some('\\'), Some('u')) => {}
                                 _ => return self.error(UnexpectedEndOfHexEscape),
                             }
 

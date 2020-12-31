@@ -761,7 +761,7 @@ impl<'a, 'tcx> Clean<Generics> for (&'a ty::Generics, ty::GenericPredicates<'tcx
                                 return Some(param.index);
                             }
                         }
-                        _ => (),
+                        _ => {}
                     }
 
                     None

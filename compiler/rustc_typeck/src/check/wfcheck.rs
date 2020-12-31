@@ -166,7 +166,7 @@ pub fn check_item_well_formed(tcx: TyCtxt<'_>, def_id: LocalDefId) {
                     hir::ForeignItemKind::Static(ref ty, ..) => {
                         check_item_type(tcx, it.hir_id, ty.span, true)
                     }
-                    hir::ForeignItemKind::Type => (),
+                    hir::ForeignItemKind::Type => {}
                 }
             }
         }
@@ -284,7 +284,7 @@ pub fn check_impl_item(tcx: TyCtxt<'_>, def_id: LocalDefId) {
 fn check_param_wf(tcx: TyCtxt<'_>, param: &hir::GenericParam<'_>) {
     match param.kind {
         // We currently only check wf of const params here.
-        hir::GenericParamKind::Lifetime { .. } | hir::GenericParamKind::Type { .. } => (),
+        hir::GenericParamKind::Lifetime { .. } | hir::GenericParamKind::Type { .. } => {}
 
         // Const parameters are well formed if their
         // type is structural match.

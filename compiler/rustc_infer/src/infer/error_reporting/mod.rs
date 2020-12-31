@@ -580,7 +580,7 @@ impl<'a, 'tcx> InferCtxt<'a, 'tcx> {
             TypeError::Traits(ref exp_found) => {
                 report_path_match(err, exp_found.expected, exp_found.found);
             }
-            _ => (), // FIXME(#22750) handle traits and stuff
+            _ => {} // FIXME(#22750) handle traits and stuff
         }
     }
 
@@ -772,7 +772,7 @@ impl<'a, 'tcx> InferCtxt<'a, 'tcx> {
                     );
                 }
             }
-            _ => (),
+            _ => {}
         }
     }
 

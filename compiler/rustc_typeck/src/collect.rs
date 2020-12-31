@@ -719,7 +719,7 @@ fn convert_item(tcx: TyCtxt<'_>, item_id: hir::HirId) {
             match it.kind {
                 hir::ItemKind::Fn(..) => tcx.ensure().fn_sig(def_id),
                 hir::ItemKind::OpaqueTy(..) => tcx.ensure().item_bounds(def_id),
-                _ => (),
+                _ => {}
             }
         }
     }
@@ -1897,7 +1897,7 @@ fn gather_explicit_predicates_of(tcx: TyCtxt<'_>, def_id: DefId) -> ty::GenericP
     for param in ast_generics.params {
         match param.kind {
             // We already dealt with early bound lifetimes above.
-            GenericParamKind::Lifetime { .. } => (),
+            GenericParamKind::Lifetime { .. } => {}
             GenericParamKind::Type { .. } => {
                 let name = param.name.ident().name;
                 let param_ty = ty::ParamTy::new(index, name).to_ty(tcx);

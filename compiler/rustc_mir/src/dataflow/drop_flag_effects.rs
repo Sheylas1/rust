@@ -225,7 +225,7 @@ pub(crate) fn for_location_inits<'tcx, F>(
                 let mpi = init.path;
                 callback(mpi);
             }
-            InitKind::NonPanicPathOnly => (),
+            InitKind::NonPanicPathOnly => {}
         }
     }
 }

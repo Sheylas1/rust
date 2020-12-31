@@ -1029,7 +1029,7 @@ impl EmitterWriter {
                         buffer.putc(p, width_offset + depth - 1, '|', style);
                     }
                 }
-                _ => (),
+                _ => {}
             }
         }
 
@@ -1720,7 +1720,7 @@ impl EmitterWriter {
                         &mut self.dst,
                         self.short_message,
                     ) {
-                        Ok(()) => (),
+                        Ok(()) => {}
                         Err(e) => panic!("failed to emit error: {}", e),
                     }
                 }

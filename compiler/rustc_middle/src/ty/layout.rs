@@ -2600,7 +2600,7 @@ where
                     cx.tcx().mk_mut_ptr(layout.ty)
                 } else {
                     match layout.abi {
-                        Abi::ScalarPair(..) => (),
+                        Abi::ScalarPair(..) => {}
                         _ => bug!("receiver type has unsupported layout: {:?}", layout),
                     }
 

@@ -52,7 +52,7 @@ impl<'tcx> MutVisitor<'tcx> for DeleteNonCodegenStatements<'tcx> {
             StatementKind::AscribeUserType(..)
             | StatementKind::Assign(box (_, Rvalue::Ref(_, BorrowKind::Shallow, _)))
             | StatementKind::FakeRead(..) => statement.make_nop(),
-            _ => (),
+            _ => {}
         }
         self.super_statement(statement, location);
     }

@@ -657,7 +657,6 @@ macro_rules! todo {
 /// with exception of expansion functions transforming macro inputs into outputs,
 /// those functions are provided by the compiler.
 pub(crate) mod builtin {
-
     /// Causes compilation to fail with the given error message when encountered.
     ///
     /// This macro should be used when a crate uses a conditional compilation strategy to provide

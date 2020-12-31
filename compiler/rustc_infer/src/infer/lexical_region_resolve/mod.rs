@@ -374,7 +374,7 @@ impl<'cx, 'tcx> LexicalResolver<'cx, 'tcx> {
             }
             if let Some(a_vid) = a_vid {
                 match *b_data {
-                    VarValue::Value(ReStatic) | VarValue::ErrorValue => (),
+                    VarValue::Value(ReStatic) | VarValue::ErrorValue => {}
                     _ => {
                         constraints[a_vid].push((a_vid, b_vid));
                         constraints[b_vid].push((a_vid, b_vid));

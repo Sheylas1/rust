@@ -51,7 +51,7 @@ impl dataflow::GenKillAnalysis<'tcx> for MaybeStorageLive {
         match stmt.kind {
             StatementKind::StorageLive(l) => trans.gen(l),
             StatementKind::StorageDead(l) => trans.kill(l),
-            _ => (),
+            _ => {}
         }
     }
 

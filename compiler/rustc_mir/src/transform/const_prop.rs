@@ -633,7 +633,7 @@ impl<'mir, 'tcx> ConstPropagator<'mir, 'tcx> {
                     }
                 }
             }
-            Operand::Constant(_) => (),
+            Operand::Constant(_) => {}
         }
     }
 

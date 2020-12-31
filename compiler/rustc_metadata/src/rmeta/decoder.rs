@@ -1375,7 +1375,7 @@ impl<'a, 'tcx> CrateMetadataRef<'a> {
     fn get_trait_of_item(&self, id: DefIndex) -> Option<DefId> {
         let def_key = self.def_key(id);
         match def_key.disambiguated_data.data {
-            DefPathData::TypeNs(..) | DefPathData::ValueNs(..) => (),
+            DefPathData::TypeNs(..) | DefPathData::ValueNs(..) => {}
             // Not an associated item
             _ => return None,
         }

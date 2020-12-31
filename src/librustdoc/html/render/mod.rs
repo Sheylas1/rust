@@ -2020,19 +2020,19 @@ crate fn compare_names(mut lhs: &str, mut rhs: &str) -> Ordering {
         let (ra, rb) = take_parts(&mut rhs);
         // First process the non-numeric part.
         match la.cmp(ra) {
-            Ordering::Equal => (),
+            Ordering::Equal => {}
             x => return x,
         }
         // Then process the numeric part, if both sides have one (and they fit in a u64).
         if let (Ok(ln), Ok(rn)) = (lb.parse::<u64>(), rb.parse::<u64>()) {
             match ln.cmp(&rn) {
-                Ordering::Equal => (),
+                Ordering::Equal => {}
                 x => return x,
             }
         }
         // Then process the numeric part again, but this time as strings.
         match lb.cmp(rb) {
-            Ordering::Equal => (),
+            Ordering::Equal => {}
             x => return x,
         }
     }
@@ -4173,7 +4173,7 @@ fn print_sidebar(cx: &Context<'_>, it: &clean::Item, buffer: &mut Buffer, cache:
         clean::TypedefItem(_, _) => sidebar_typedef(buffer, it),
         clean::ModuleItem(ref m) => sidebar_module(buffer, &m.items),
         clean::ForeignTypeItem => sidebar_foreign_type(buffer, it),
-        _ => (),
+        _ => {}
     }
 
     // The sidebar is designed to display sibling functions, modules and

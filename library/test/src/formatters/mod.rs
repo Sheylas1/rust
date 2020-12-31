@@ -32,9 +32,9 @@ pub(crate) trait OutputFormatter {
 
 pub(crate) fn write_stderr_delimiter(test_output: &mut Vec<u8>, test_name: &TestName) {
     match test_output.last() {
-        Some(b'\n') => (),
+        Some(b'\n') => {}
         Some(_) => test_output.push(b'\n'),
-        None => (),
+        None => {}
     }
     writeln!(test_output, "---- {} stderr ----", test_name).unwrap();
 }

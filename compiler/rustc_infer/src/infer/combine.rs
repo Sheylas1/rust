@@ -633,7 +633,7 @@ impl TypeRelation<'tcx> for Generalizer<'_, 'tcx> {
 
                                 // Co/contravariant: this will be
                                 // sufficiently constrained later on.
-                                ty::Covariant | ty::Contravariant => (),
+                                ty::Covariant | ty::Contravariant => {}
                             }
 
                             let origin =

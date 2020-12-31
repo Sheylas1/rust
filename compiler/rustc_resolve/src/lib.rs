@@ -743,10 +743,13 @@ impl<'a> NameBinding<'a> {
     }
 
     fn is_variant(&self) -> bool {
-        matches!(self.kind, NameBindingKind::Res(
+        matches!(
+            self.kind,
+            NameBindingKind::Res(
                 Res::Def(DefKind::Variant | DefKind::Ctor(CtorOf::Variant, ..), _),
                 _,
-            ))
+            )
+        )
     }
 
     fn is_extern_crate(&self) -> bool {
